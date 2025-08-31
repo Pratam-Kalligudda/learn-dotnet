@@ -1,12 +1,22 @@
-﻿namespace NZWalks.Models.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NZWalks.Models.DTO
 {
     public class UpdateWalkRequestDto
     {
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        public double LengthInKm { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public required string Name { get; set; }
+        [Required]
+        [MaxLength(1000)]
+        public required string Description { get; set; }
+        [Required]
+        [Range(0, 50)]
+        public required double LengthInKm { get; set; }
         public string? WalkImageURL { get; set; }
-        public Guid DifficultyId { get; set; }
-        public Guid RegionId { get; set; }
+        [Required]
+        public required Guid DifficultyId { get; set; }
+        [Required]
+        public required Guid RegionId { get; set; }
     }
 }
